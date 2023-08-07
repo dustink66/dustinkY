@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'UTC' => 'UTC',
+    'Asia/Shanghai' => 'Asia/Shanghai',
+    'Asia/Hong_Kong' => 'Asia/Hong_Kong',
+    'America/New_York' => 'America/New_York',
+    'America/Chicago' => 'America/Chicago',
+    'Europe/London' => 'Europe/London',
+    'Asia/Tokyo' => 'Asia/Tokyo',
+    'Australia/Sydney' => 'Australia/Sydney',
+    'Europe/Paris' => 'Europe/Paris',
+    'America/Los_Angeles' => 'America/Los_Angeles',
+    'Europe/Berlin' => 'Europe/Berlin',
+    'America/Toronto' => 'America/Toronto',
+    'Asia/Dubai' => 'Asia/Dubai',
+    'America/Sao_Paulo' => 'America/Sao_Paulo',
+    'Africa/Johannesburg' => 'Africa/Johannesburg',
+    'Europe/Rome' => 'Europe/Rome',
+    'Asia/Singapore' => 'Asia/Singapore',
+    'Europe/Madrid' => 'Europe/Madrid',
+    'Pacific/Auckland' => 'Pacific/Auckland',
+    'Europe/Amsterdam' => 'Europe/Amsterdam',
+    'Europe/Moscow' => 'Europe/Moscow',
+    'Asia/Kolkata' => 'Asia/Kolkata',
+    'Asia/Kuala_Lumpur' => 'Asia/Kuala_Lumpur',
+    'Asia/Bangkok' => 'Asia/Bangkok',
+    'Asia/Jakarta' => 'Asia/Jakarta',
+    'Asia/Seoul' => 'Asia/Seoul',
+    'Asia/Taipei' => 'Asia/Taipei',
+    'Asia/Riyadh' => 'Asia/Riyadh',
+    'Asia/Manila' => 'Asia/Manila',
+];

@@ -1,0 +1,35 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'UTC' => '世界标准时间',
+    'Asia/Shanghai' => '中国上海 UTC/GMT+8',
+    'Asia/Hong_Kong' => '中国香港 UTC/GMT+8',
+    'America/New_York' => '美国纽约 UTC/GMT-5',
+    'America/Chicago' => '美国芝加哥 UTC/GMT-6',
+    'Europe/London' => '英国伦敦 UTC/GMT',
+    'Asia/Tokyo' => '日本东京 UTC/GMT+9',
+    'Australia/Sydney' => '澳大利亚悉尼 UTC/GMT+10',
+    'Europe/Paris' => '法国巴黎 UTC/GMT+2',
+    'America/Los_Angeles' => '美国洛杉矶 UTC/GMT-7',
+    'Europe/Berlin' => '德国柏林 UTC/GMT+2',
+    'America/Toronto' => '加拿大多伦多 UTC/GMT-4',
+    'Asia/Dubai' => '阿联酋迪拜 UTC/GMT+4',
+    'America/Sao_Paulo' => '巴西圣保罗 UTC/GMT-3',
+    'Africa/Johannesburg' => '南非约翰内斯堡 UTC/GMT+2',
+    'Europe/Rome' => '意大利罗马 UTC/GMT+2',
+    'Asia/Singapore' => '新加坡 UTC/GMT+8',
+    'Europe/Madrid' => '西班牙马德里 UTC/GMT+2',
+    'Pacific/Auckland' => '新西兰奥克兰 UTC/GMT+12',
+    'Europe/Amsterdam' => '荷兰阿姆斯特丹 UTC/GMT+2',
+    'Europe/Moscow' => '俄罗斯莫斯科 UTC/GMT+3',
+    'Asia/Kolkata' => '印度新德里 UTC/GMT+5:30',
+    'Asia/Kuala_Lumpur' => '马来西亚吉隆坡 UTC/GMT+8',
+    'Asia/Bangkok' => '泰国曼谷 UTC/GMT+7',
+    'Asia/Jakarta' => '印度尼西亚雅加达 UTC/GMT+7',
+    'Asia/Seoul' => '韩国首尔 UTC/GMT+9',
+    'Asia/Taipei' => '中国台北 UTC/GMT+8',
+    'Asia/Riyadh' => '沙特阿拉伯利雅得 UTC/GMT+3',
+    'Asia/Manila' => '菲律宾马尼拉 UTC/GMT+8',
+];

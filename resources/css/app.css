@@ -1,0 +1,32 @@
+@import url('fonts/chinese/LongCang.styl');
+@import url('fonts/chinese/MaShanZheng.styl');
+@import url('fonts/chinese/ZhiMangXing.styl');
+@import url('fonts/chinese/ZCOOL-KuaiLe.styl');
+@import url('fonts/chinese/ZCOOL-QingKe-HuangYou.styl');
+@import url('fonts/chinese/ZCOOL-XiaoWei.styl');
+@import url('fonts/chinese/ZCOOL-WenYi.styl');
+@import url('fonts/chinese/ZCOOL-KuHei.styl');
+@import url('fonts/chinese/ZCOOL-TsangerYuYang.styl');
+@import url('fonts/chinese/HDKXZDTNFF-GB1.styl');
+@import url('fonts/chinese/HDKXZDTNFJ-GB1.styl');
+@import url('fonts/english/Pacifico.styl');
+@import url('fonts/english/Pushster.styl');
+@import url('fonts/english/VujahdayScript.styl');
+@import url('fonts/english/OoohBaby.styl');
+@import url('fonts/english/Licorice.styl');
+@import url('fonts/english/Lobster.styl');
+@import url('fonts/english/DancingScript.styl');
+@import url('fonts/english/MoonDance.styl');
+@import url('fonts/english/ZCOOL-Addict-Italic-01.styl');
+@import url('fonts/english/ZCOOL-Addict-Italic-02.styl');
+@import url('fonts/antd.css');
+@import url('fonts/software.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.Normal-Font {
+    font-family: 'PingFang SC', 'Microsoft YaHei', '微软雅黑', 'Helvetica Neue', 'Helvetica', 'Arial', 'STHeitiSC-Light', 'sans-serif', cursive !important;
+}

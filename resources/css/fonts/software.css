@@ -1,0 +1,177 @@
+@font-face {
+    font-family: "software"; /* Project id 3118203 */
+    /* Color fonts */
+    src:
+        url('//at.alicdn.com/t/font_3118203_vsbao135fh.woff2?t=1641848616354') format('woff2'),
+        url('//at.alicdn.com/t/font_3118203_vsbao135fh.woff?t=1641848616354') format('woff'),
+        url('//at.alicdn.com/t/font_3118203_vsbao135fh.ttf?t=1641848616354') format('truetype');
+}
+
+.software {
+    font-family: "software" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.dustink-packagist:before {
+    content: "\e602";
+}
+
+.dustink-segmentfault:before {
+    content: "\e600";
+}
+
+.dustink-imooc:before {
+    content: "\e601";
+}
+
+.dustink-bilibili:before {
+    content: "\e62d";
+}
+
+.dustink-email:before {
+    content: "\65";
+}
+
+.dustink-apple:before {
+    content: "\e60a";
+}
+
+.dustink-baidu:before {
+    content: "\e60c";
+}
+
+.dustink-douban:before {
+    content: "\e60d";
+}
+
+.dustink-cnblogs:before {
+    content: "\e611";
+}
+
+.dustink-alipay:before {
+    content: "\e616";
+}
+
+.dustink-linkedin:before {
+    content: "\e618";
+}
+
+.dustink-dingtalk:before {
+    content: "\e61d";
+}
+
+.dustink-facebook:before {
+    content: "\e61e";
+}
+
+.dustink-gitlab:before {
+    content: "\e620";
+}
+
+.dustink-csdn:before {
+    content: "\e623";
+}
+
+.dustink-microsoft:before {
+    content: "\e624";
+}
+
+.dustink-oschina:before {
+    content: "\e625";
+}
+
+.dustink-telegram:before {
+    content: "\e629";
+}
+
+.dustink-instagram:before {
+    content: "\e62a";
+}
+
+.dustink-gitee:before {
+    content: "\e62c";
+}
+
+.dustink-github:before {
+    content: "\e62e";
+}
+
+.dustink-wechat:before {
+    content: "\e631";
+}
+
+.dustink-twitter:before {
+    content: "\e632";
+}
+
+.dustink-wordpress:before {
+    content: "\e634";
+}
+
+.dustink-yuque:before {
+    content: "\e635";
+}
+
+.dustink-trello:before {
+    content: "\e636";
+}
+
+.dustink-tianya:before {
+    content: "\e637";
+}
+
+.dustink-qq:before {
+    content: "\e63f";
+}
+
+.dustink-google:before {
+    content: "\e641";
+}
+
+.dustink-zhihu:before {
+    content: "\e642";
+}
+
+.dustink-juejin:before {
+    content: "\e645";
+}
+
+.dustink-rss:before {
+    content: "\e646";
+}
+
+.dustink-renren-simple:before {
+    content: "\e64b";
+}
+
+.dustink-jianshu:before {
+    content: "\e64c";
+}
+
+.dustink-paypal:before {
+    content: "\e64e";
+}
+
+.dustink-whatsapp:before {
+    content: "\e651";
+}
+
+.dustink-youtube:before {
+    content: "\e652";
+}
+
+.dustink-weibo:before {
+    content: "\e657";
+}
+
+.dustink-momo:before {
+    content: "\e658";
+}
+
+.dustink-skype:before {
+    content: "\e65e";
+}
+
