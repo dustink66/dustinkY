@@ -7,7 +7,7 @@
 - 也可以自行Clone本项目，然后按照 [DustinkY 编译安装教程](https://www.dustinky.com/posts/clone-install-dustinky) 进行安装。
 ## 问题反馈
 - 在使用中有任何问题，请使用以下联系方式联系我们
-- 官方QQ群：[![加入QQ群](https://img.shields.io/badge/QQ群-加入QQ群-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=7ed9bYYn-7KXP38Dwz0chA3wt6kTW5Rh&jump_from=webapi&authKey=dGTHS18aOJJG/8jAMV9jj/tEat5tSB7UYvm+59F08dxvrOdq4GDLtcA5Af4J/mZ3)
+- 官方QQ群：[![加入QQ群](https://img.shields.io/badge/QQ群-632552630-blue.svg)](https://qm.qq.com/cgi-bin/qm/qr?k=7ed9bYYn-7KXP38Dwz0chA3wt6kTW5Rh&jump_from=webapi&authKey=dGTHS18aOJJG/8jAMV9jj/tEat5tSB7UYvm+59F08dxvrOdq4GDLtcA5Af4J/mZ3)
 - 官方网站：[https://www.dustinky.com](https://www.dustinky.com)
 - 官方社区：[https://community.dustinky.com/](https://community.dustinky.com/)
 - 官方文档：[https://docs.dustinky.com/](https://docs.dustinky.com/)

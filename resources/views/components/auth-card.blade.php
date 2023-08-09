@@ -4,7 +4,7 @@
             {{ $logo }}
         @else
             <Link href="/">
-                <SvgLogo height="h-20" />
+                <SvgLogo height="h-20" url="{{ env('APP_LOGO') }}" font-size="text-5xl" site-name="{{ env('APP_NAME') }}" />
             </Link>
         @endisset
     </div>
