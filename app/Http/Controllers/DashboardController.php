@@ -63,6 +63,7 @@ class DashboardController extends Controller
         $APP_SWITCH = EnvServices::getEnv('APP_SWITCH');
         $APP_NAME = EnvServices::getEnv('APP_NAME');
         $APP_URL = EnvServices::getEnv('APP_URL');
+        $APP_LOGO = EnvServices::getEnv('APP_LOGO');
         $APP_SWITCH_MESSAGE = EnvServices::getEnv('APP_SWITCH_MESSAGE');
         $APP_KEYWORDS = EnvServices::getEnv('APP_KEYWORDS');
         $APP_DESCRIPTION = EnvServices::getEnv('APP_DESCRIPTION');
@@ -72,7 +73,7 @@ class DashboardController extends Controller
         $APP_LOCALE = EnvServices::getEnv('APP_LOCALE');
         $APP_LOCALES = EnvServices::getEnvLocale();
         $APP_FONT_FAMILY = EnvServices::getEnv('APP_FONT_FAMILY');
-        return view('dashboard.setting', compact('APP_SWITCH','APP_NAME', 'APP_URL', 'APP_SWITCH_MESSAGE', 'APP_KEYWORDS', 'APP_DESCRIPTION', 'ICP_NUMBER', 'APP_TIMEZONE', 'APP_TIMEZONES', 'APP_LOCALE', 'APP_LOCALES', 'APP_FONT_FAMILY'));
+        return view('dashboard.setting', compact('APP_SWITCH','APP_NAME', 'APP_URL', 'APP_LOGO', 'APP_SWITCH_MESSAGE', 'APP_KEYWORDS', 'APP_DESCRIPTION', 'ICP_NUMBER', 'APP_TIMEZONE', 'APP_TIMEZONES', 'APP_LOCALE', 'APP_LOCALES', 'APP_FONT_FAMILY'));
     }
 
     public function storage()

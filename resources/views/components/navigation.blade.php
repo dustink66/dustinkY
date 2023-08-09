@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <div class="shrink-0 flex items-center transform hover:scale-125 transition duration-300">
                         <Link href="{{ route('home') }}">
-                            <SvgLogo />
+                            <SvgLogo url="{{ env('APP_LOGO') }}" font-size="text-3xl" height="h-12" site-name="{{ env('APP_NAME') }}" align="left" />
                         </Link>
                     </div>
 

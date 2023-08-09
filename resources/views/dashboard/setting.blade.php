@@ -24,6 +24,12 @@
                                 <x-setting-textarea label="{{ __('MAINTENANCE') }}" attribute="APP_SWITCH_MESSAGE" :value="$APP_SWITCH_MESSAGE" />
                                 <x-setting-input label="{{ __('Site Name') }}" attribute="APP_NAME" :value="$APP_NAME" />
                                 <x-setting-input label="{{ __('Site URL') }}" attribute="APP_URL" :value="$APP_URL" />
+                                <div class="pt-3 sm:flex text-base">
+                                    <dt class="font-medium sm:w-64 sm:flex-none sm:pr-6 leading-9">{{ __('Site Logo') }}</dt>
+                                    <dd class="w-full">
+                                        <UploadImage check-url="{{ route('upload.check_exists') }}" upload-url="{{ route('upload.image') }}" input-key="APP_LOGO" button-text="{{ __('Site Logo') }}" save-url="{{ route('dashboard.update') }}" image-url="{{ $APP_LOGO }}"/>
+                                    </dd>
+                                </div>
                                 <x-setting-select label="{{ __('Site Timezone') }}" attribute="APP_TIMEZONE" :value="$APP_TIMEZONE" :options="$APP_TIMEZONES" />
                                 <x-setting-select label="{{ __('Site Locale') }}" attribute="APP_LOCALE" :value="$APP_LOCALE" :options="$APP_LOCALES" />
                                 <div class="pt-3 sm:flex text-base">

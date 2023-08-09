@@ -97,7 +97,7 @@ class HomeController extends Controller
                 $postIds = PostsTag::where('tag_id', $tag->id)->get();
                 $posts = [];
                 foreach ($postIds as $postId) {
-                    $post = Post::where('id', $postId->post_id)->first();
+                    $post = Post::where('ulid', $postId->post_id)->first();
                     if ($post) {
                         $posts[] = $post;
                     }
