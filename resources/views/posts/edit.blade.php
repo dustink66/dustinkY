@@ -61,7 +61,7 @@
     <div class="pt-16 pb-6 relative z-0">
         <WangEditor title-value="{{ $post->title }}" content="{{ $post->content }}" url="{{ route('posts.update', $post) }}" uploadImageUrl="{{ route('upload.image') }}" uploadVideoUrl="{{ route('upload.video') }}" checkUrl="{{ route('upload.check_exists') }}" />
         <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg sm:py-1 lg:px-8 dark:bg-zinc-900 bg-opacity-80 dark:bg-opacity-80">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg sm:py-1 lg:px-8 dark:bg-zinc-900 bg-opacity-50 dark:bg-opacity-50 backdrop-blur-sm backdrop-filter">
                 <div class="sm:grid sm:grid-cols-12 sm:items-start sm:gap-4 sm:py-3" x-data="{
                     toggle(category_id) {
                         axios.patch('{{ route('posts.update', $post) }}', {

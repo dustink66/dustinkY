@@ -9,7 +9,7 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4">
             <div
-                class="bg-white bg-opacity-75 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-75">
+                class="bg-white bg-opacity-50 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-50 backdrop-blur-sm backdrop-filter">
                 <main>
                     <x-dashboard-overview :overview="$overview" />
 

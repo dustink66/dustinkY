@@ -1385,5 +1385,10 @@
     "Category created successfully!": "分类创建成功！",
     "Category updated successfully!": "分类更新成功！",
     "Category deleted successfully!": "分类删除成功！",
-    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "请在 php.ini 中开启 symlink 函数！然后刷新当前页面进行系统安装。系统安装完成后可以关闭 symlink 函数。"
+    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "请在 php.ini 中开启 symlink 函数！然后刷新当前页面进行系统安装。系统安装完成后可以关闭 symlink 函数。",
+    "Please enter search keywords": "请输入搜索关键词",
+    "Search results for :keyword": "<span class='text-green-500 text-lg'>:keyword</span> 的搜索结果",
+    "No results related to :keyword were found": "没有找到与 <span class='font-semibold text-2xl text-green-500'>:keyword</span> 相关的结果",
+    "All Rights Reserved": "版权所有",
+    "View articles published this month": "查看本月发布的文章"
 }

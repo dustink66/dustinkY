@@ -3,7 +3,7 @@
     <div class="z-0 py-24 max-w-7xl mx-auto px-4">
         <h2 class=" text-center p-10 text-3xl font-bold tracking-wider text-white sm:text-5xl" style="text-shadow: rgb(0, 0, 0) 0 0 0.8em, rgb(0, 0, 0) 0 0 0.4em;">{{ __('Timeline') }}</h2>
         @forelse ($archive as $monthYear => $posts)
-        <div class="p-5 mb-4 border border-gray-100 bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl dark:border-gray-700 ">
+        <div class="p-5 mb-4 border border-gray-100 bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl dark:border-gray-700 backdrop-blur-sm backdrop-filter">
             <time class="text-xl font-semibold text-gray-900 dark:text-white">{{ $monthYear }}</time>
             <ol class="relative border-l border-gray-500 dark:border-gray-300 mt-2">
                 @foreach ($posts as $post)
@@ -21,7 +21,7 @@
             </ol>
         </div>
         @empty
-            <div class="border border-gray-100 bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl dark:border-gray-700 text-center pb-12">
+            <div class="border border-gray-100 bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl dark:border-gray-700 text-center pb-12 backdrop-blur-sm backdrop-filter">
                 <x-empty tipsText="{{$emptyText}}" />
             </div>
         @endforelse

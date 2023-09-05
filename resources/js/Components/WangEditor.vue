@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="fixed w-full flex justify-center items-center bg-white border-1 dark:bg-zinc-900 z-10">
+    <div id="toolbar" class="fixed w-full flex justify-center items-center bg-white bg-opacity-50 border-1 dark:bg-zinc-900 dark:bg-opacity-50 z-10 backdrop-blur-sm backdrop-filter">
         <Toolbar
             class="justify-center items-center text-center"
             :editor="editorRef"
@@ -28,8 +28,8 @@
 
     <div class="pt-10 pb-5">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-5 sm:py-1 lg:px-8 dark:bg-zinc-900 bg-opacity-80 dark:bg-opacity-80">
-                <div class="py-8 leading-8 border-b-2 dark:border-zinc-700">
+            <div class="bg-white backdrop-blur-sm backdrop-filter overflow-hidden shadow-sm sm:rounded-lg mt-5 sm:py-1 lg:px-8 dark:bg-zinc-900 bg-opacity-80 dark:bg-opacity-80">
+                <div class="py-8 leading-8 border-b-2 border-gray-300/100 dark:border-zinc-500/100">
                     <input :placeholder="titlePlaceholder" v-model="title" class="text-5xl focus:outline-none w-full bg-transparent dark:text-gray-200" >
                 </div>
                 <div id="content">
@@ -100,6 +100,19 @@ export default {
         },
     },
     setup(props) {
+
+        window.addEventListener('scroll', function() {
+            const div = document.getElementById('toolbar');
+
+            if (window.scrollY > div.offsetHeight / 2) {
+                div.classList.remove('backdrop-blur-sm');
+                div.classList.add('backdrop-blur-lg');
+            } else {
+                div.classList.remove('backdrop-blur-lg');
+                div.classList.add('backdrop-blur-sm');
+            }
+        });
+
         // 编辑器实例，必须用 shallowRef
         const editorRef = shallowRef()
         // 内容 HTML
@@ -534,6 +547,10 @@ html {
 
     ::-webkit-scrollbar-track {
         background-color: rgb(209 213 219/0.5);
+    }
+
+    .w-e-toolbar {
+        background-color: transparent;
     }
 }
 </style>

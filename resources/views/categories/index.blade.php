@@ -14,7 +14,7 @@
 
     <div class="py-10">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="px-6 py-1 bg-opacity-80 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-80 dark:text-gray-200">
+            <div class="px-6 py-1 bg-opacity-50 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-50 dark:text-gray-200 backdrop-blur-sm backdrop-filter">
                 <x-category-list :categories="$categories"></x-category-list>
             </div>
         </div>

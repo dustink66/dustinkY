@@ -1,5 +1,6 @@
 <x-layout>
     @seoTitle($category->title)
+    @seoDescription($category->description)
     <div class="py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-4">
             <div class="mx-auto max-w-2xl text-center">

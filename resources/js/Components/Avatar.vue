@@ -8,7 +8,7 @@ export default {
     props: {
         src: {
             type: String,
-            default: "http://static.dustinky.com/images/dLHtta66tJvbRG8To6P93ZFzE85Rb1acGyieYTE1.png"
+            default: ""
         }
     }
 }
@@ -17,13 +17,13 @@ export default {
 <style>
 :root {
     /* 图片大小 */
-    --s: 280px;
+    --s: 240px;
     /* 边框大小 */
-    --b: 5px;
+    --b: 8px;
     /* 边框颜色 */
     --c: #fff;
     /* 背景颜色 */
-    --bg: #fff;
+    --bg: lightgray;
     /* 默认缩放比例 */
     --f: 1;
 }
@@ -32,7 +32,7 @@ export default {
     width: var(--s);
     aspect-ratio: 1;
     object-fit: contain;
-    padding-top: calc(var(--s) / 5);
+    padding-top: calc(var(--s) / 7);
     cursor: pointer;
     transform: scale(var(--f));
     transition: 0.5s;
@@ -57,6 +57,6 @@ export default {
 }
 .post-avatar:hover {
     /* 缩放比例 */
-    --f: 1.35;
+    --f: 1.25;
 }
 </style>

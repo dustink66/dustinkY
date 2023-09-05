@@ -20,7 +20,7 @@
     </div>
     <div :id="parentId" class="flex items-start space-x-4">
         <div class="flex-shrink-0">
-            <div v-if="userInfo.avatar" class="h-16 w-16 rounded-full">
+            <div v-if="userInfo.avatar" class="h-16 w-16 rounded-full ring-2 ring-gray-100 bg-white">
                 <img :src="userInfo.avatar" alt="" class="w-full block h-full object-contain rounded-full">
             </div>
             <span v-else class="inline-flex h-16 w-16 items-center justify-center rounded-full bg-green-500">
@@ -50,8 +50,8 @@
                         </div>
                     </div>
                     <div class="flex-shrink-0">
-                        <button @click="submitComment" class="inline-flex px-3 py-1 rounded text-secondary bg-green-500 text-white hover:bg-green-400 items-center space-x-2">
-                            <span>发表</span>
+                        <button @click="submitComment" class="inline-flex px-3 rounded text-secondary bg-green-500 text-white hover:bg-green-400 items-center space-x-2">
+                            <span class="antd icon-publish text-xl"></span>
                         </button>
                     </div>
                 </div>

@@ -75,15 +75,10 @@
             @endif
         @endauth
 
-        <div id="content"
-             class="px-4 py-4 sm:px-4 lg:px-8 sm:py-4 lg:py-8 bg-opacity-80 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-80 dark:text-gray-200">
-            <OnThisPage content="{{ $post->content }}"/>
-            <div class="justify-end text-right mt-12">{{ __('Last Updated') }}<span
-                    class="font-bold pl-3">{{ $post->updated_at }}</span></div>
-        </div>
+        <OnThisPage content="{{ $post->content }}" updated-at="{{ $post->updated_at }}" updated-text="{{ __('Last Updated') }}" />
 
         <div
-            class="mt-8 px-4 py-4 sm:px-4 lg:px-8 sm:py-4 lg:py-8 bg-opacity-80 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-80 dark:text-gray-200">
+            class="mt-8 px-4 py-4 sm:px-4 lg:px-8 sm:py-4 lg:py-8 bg-opacity-50 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-50 dark:text-gray-200 backdrop-blur-sm backdrop-filter">
             <Comment post-id="{{ $post->ulid }}" post-slug="{{ $post->slug }}"></Comment>
         </div>
     </div>

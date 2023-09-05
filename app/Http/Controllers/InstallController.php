@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Requests\InstallDatabaseRequest;
 use App\Http\Requests\InstallUserRequest;
-use App\Services\EnvServices;
+use App\Services\EnvService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -23,7 +23,7 @@ class InstallController extends Controller
     {
         $locale = Session::get('locale', env('APP_LOCALE'));
         App::setLocale($locale);
-        $locales = EnvServices::getEnvLocale();
+        $locales = EnvService::getEnvLocale();
         Artisan::call('key:generate', ['--force' => true]);
         Artisan::call('storage:link', ['--force' => true]);
         Artisan::call('optimize:clear');
@@ -43,14 +43,14 @@ class InstallController extends Controller
         try {
             $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s', $request->input('database.host'), $request->input('database.port'), $request->input('database.name'));
             new \PDO($dsn, $request->input('database.username'), $request->input('database.password'));
-            EnvServices::updateEnv('APP_NAME', $request->input('website.name'));
-            EnvServices::updateEnv('APP_URL', $request->input('website.address'));
-            EnvServices::updateEnv('APP_LOCALE', $locale);
-            EnvServices::updateEnv('DB_HOST', $request->input('database.host'));
-            EnvServices::updateEnv('DB_PORT', $request->input('database.port'));
-            EnvServices::updateEnv('DB_DATABASE', $request->input('database.name'));
-            EnvServices::updateEnv('DB_USERNAME', $request->input('database.username'));
-            EnvServices::updateEnv('DB_PASSWORD', $request->input('database.password'));
+            EnvService::updateEnv('APP_NAME', $request->input('website.name'));
+            EnvService::updateEnv('APP_URL', $request->input('website.address'));
+            EnvService::updateEnv('APP_LOCALE', $locale);
+            EnvService::updateEnv('DB_HOST', $request->input('database.host'));
+            EnvService::updateEnv('DB_PORT', $request->input('database.port'));
+            EnvService::updateEnv('DB_DATABASE', $request->input('database.name'));
+            EnvService::updateEnv('DB_USERNAME', $request->input('database.username'));
+            EnvService::updateEnv('DB_PASSWORD', $request->input('database.password'));
             return redirect()->route('install.create', ['locale' => $locale]);
         } catch (\PDOException $e) {
             throw ValidationException::withMessages([
@@ -83,8 +83,8 @@ class InstallController extends Controller
             try {
                 $dsn = sprintf('mysql:host=%s;port=%s;dbname=%s', env('DB_HOST'), env('DB_PORT'), env('DB_DATABASE'));
                 new \PDO($dsn, env('DB_USERNAME'), env('DB_PASSWORD'));
-                EnvServices::updateEnv('WEBMASTER_NAME', $request->input('name'));
-                EnvServices::updateEnv('WEBMASTER_EMAIL', $request->input('email'));
+                EnvService::updateEnv('WEBMASTER_NAME', $request->input('name'));
+                EnvService::updateEnv('WEBMASTER_EMAIL', $request->input('email'));
                 Artisan::call('migrate:fresh', ['--force' => true]);
                 \App\Models\User::create([
                     'name' => $request->name,

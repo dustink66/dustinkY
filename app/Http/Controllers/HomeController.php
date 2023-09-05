@@ -6,18 +6,17 @@ use App\Models\Statistic;
 use App\Models\Tag;
 use App\Services\TextCensor;
 use Illuminate\Http\Request;
-use App\Services\PostManager;
+use App\Services\PostService;
 use App\Models\PostsTag;
-use Illuminate\Support\Facades\Config;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $postsCount = PostManager::getNewestPublishedPostsCounts();
+        $postsCount = PostService::getNewestPublishedPostsCounts();
         $tagsCount = Tag::count();
-        $newestPublishedPosts = PostManager::getNewestPublishedPostsWithTags(6);
-        $sliderPosts = PostManager::getSliderPosts(5);
+        $newestPublishedPosts = PostService::getNewestPublishedPostsWithTags(6);
+        $sliderPosts = PostService::getSliderPosts(5);
         $webMaster = (object)[
             'name' => env('WEBMASTER_NAME'),
             'email' => env('WEBMASTER_EMAIL'),
@@ -30,29 +29,61 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
+        return view('home.search', compact('keyword'));
+    }
+
+    public function searchResult(Request $request)
+    {
+        $keyword = $request->input('keyword');
         if (!$keyword) {
             return response()->json([
                 'results' => [],
+                'none_tips' => trans('No results related to :keyword were found', ['keyword' => $keyword]),
+                'result_title' => trans('Search results for :keyword', ['keyword' => $keyword]),
                 'totalPages' => 0,
                 'currentPage' => 0,
                 'total' => 0,
             ]);
         } else {
             $keyword = trim($keyword);
-            $page = $request->input('page');
-            $pageSize = $request->input('pageSize');
-            $results = Post::search($keyword)->where('published', 1)->paginate($pageSize);
-            $resultsItems = [];
-            foreach ($results->items() as $key => $result) {
-                $resultsItems[$key] = $result;
-                $resultsItems[$key]['url'] = route('posts.show', $result->slug);
+            if ($request->has('page') && $request->has('pageSize')) {
+                $page = $request->input('page');
+                $pageSize = $request->input('pageSize');
+                if (config('scout.driver') == 'database') {
+                    $results = Post::where('title', 'like', "%{$keyword}%")->orWhere('meta_description', 'like', "%{$keyword}%")->where('published', 1)->paginate($pageSize);
+                } else {
+                    $results = Post::search($keyword)->where('published', 1)->paginate($pageSize);
+                }
+                $resultsItems = [];
+                foreach ($results->items() as $key => $result) {
+                    $resultsItems[$key] = $result;
+                    $resultsItems[$key]['url'] = route('posts.show', $result->slug);
+                }
+                return response()->json([
+                    'results' => $resultsItems,
+                    'none_tips' => trans('No results related to :keyword were found', ['keyword' => $keyword]),
+                    'result_title' => trans('Search results for :keyword', ['keyword' => $keyword]),
+                    'totalPages' => $results->lastPage(),
+                    'currentPage' => $results->currentPage(),
+                    'total' => $results->total(),
+                ]);
+            } else {
+                if (config('scout.driver') == 'database') {
+                    $results = Post::where('title', 'like', "%{$keyword}%")->orWhere('meta_description', 'like', "%{$keyword}%")->where('published', 1)->get();
+                } else {
+                    $results = Post::search($keyword)->where('published', 1)->get();
+                }
+                $resultsItems = [];
+                foreach ($results as $key => $result) {
+                    $resultsItems[$key] = $result;
+                    $resultsItems[$key]['url'] = route('posts.show', $result->slug);
+                }
+                return response()->json([
+                    'results' => $resultsItems,
+                    'none_tips' => trans('No results related to :keyword were found', ['keyword' => $keyword]),
+                    'result_title' => trans('Search results for :keyword', ['keyword' => $keyword]),
+                ]);
             }
-            return response()->json([
-                'results' => $resultsItems,
-                'totalPages' => $results->lastPage(),
-                'currentPage' => $results->currentPage(),
-                'total' => $results->total(),
-            ]);
         }
     }
 
@@ -86,6 +117,16 @@ class HomeController extends Controller
             $archive[$monthYear][] = $post;
         }
         return view('home.timeline', compact('archive', 'emptyText'));
+    }
+
+    public function getPostsByDate($date = '2022-8-14')
+    {
+        list($year, $month, $day) = explode('-', $date);
+        $posts = Post::whereYear('published_at', $year)->whereMonth('published_at', $month)->whereDay('published_at', $day)->get();
+        return response()->json([
+            'total' => count($posts),
+            'results' => $posts,
+        ]);
     }
 
     public function tag($name = null)

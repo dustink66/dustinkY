@@ -1,6 +1,6 @@
 <x-splade-toggle>
-    <div id="navigation" class="fixed top-0 w-full bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 z-10">
-        <nav class="w-full border-b border-gray-100 dark:border-zinc-700">
+    <div id="navigation" class="fixed top-0 w-full bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 z-10 backdrop-blur-sm backdrop-filter">
+        <nav class="w-full border-b border-gray-200 dark:border-zinc-700">
             <!-- Primary Navigation Menu -->
             <div class="max-w-7xl mx-auto px-4">
                 <div class="flex justify-between h-16">
@@ -163,11 +163,11 @@
         var div = document.getElementById('navigation');
 
         if (window.scrollY > div.offsetHeight / 2) {
-            div.classList.remove('bg-opacity-75', 'dark:bg-opacity-75');
-            div.classList.add('bg-opacity-100', 'dark:bg-opacity-100');
+            div.classList.remove('backdrop-blur-sm');
+            div.classList.add('backdrop-blur-lg');
         } else {
-            div.classList.remove('bg-opacity-100', 'dark:bg-opacity-100');
-            div.classList.add('bg-opacity-75', 'dark:bg-opacity-75');
+            div.classList.remove('backdrop-blur-lg');
+            div.classList.add('backdrop-blur-sm');
         }
     });
 </x-splade-script>

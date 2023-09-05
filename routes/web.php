@@ -53,9 +53,11 @@ Route::middleware('splade')->group(function () {
         Route::get('/timeline/{yearMonth?}', 'App\Http\Controllers\HomeController@timeline')
             ->where('yearMonth', '(20\d{2}(0[1-9]|1[0-2])|\d{4}(0?[1-9]|1[0-2]))')
             ->name('timeline');
+        Route::get('/getPostsByDate/{date}', 'App\Http\Controllers\HomeController@getPostsByDate')->name('getPostsByDate');
         Route::get('/posts/{post:slug}', 'App\Http\Controllers\PostController@show')->name('posts.show');
         Route::get('/categories/{category:slug}', 'App\Http\Controllers\CategoryController@show')->name('categories.show');
-        Route::get('/search', 'App\Http\Controllers\HomeController@search');
+        Route::get('/search', 'App\Http\Controllers\HomeController@search')->name('search');
+        Route::post('/search', 'App\Http\Controllers\HomeController@searchResult')->name('search.result');
         Route::get('/comments/post/{post:ulid}', 'App\Http\Controllers\CommentController@post')->name('comments.post');
         Route::get('/is_login', function () {
             if (auth()->check()) {

@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use App\Services\CategoryManager;
-use App\Services\PostManager;
+use App\Services\CategoryService;
+use App\Services\PostService;
 use Illuminate\Support\Facades\Redirect;
 use ProtoneMedia\Splade\Facades\Toast;
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function create()
     {
         $categoryList = Category::defaultOrder()->get()->toTree();
-        $categories = CategoryManager::getTreeCategories($categoryList, 0);
+        $categories = CategoryService::getTreeCategories($categoryList, 0);
         return view('categories.create', compact('categories'));
     }
 
@@ -50,8 +50,8 @@ class CategoryController extends Controller
     {
         //获取栏目极其子栏目下所有文章
         $category = Category::with('children', 'parent')->find($category->id);
-        $category->posts_count = PostManager::getAllPublishedPostsCountsForCategoryAndChildren($category);
-        $posts = PostManager::getAllPublishedPostsForCategoryAndChildren($category, 9);
+        $category->posts_count = PostService::getAllPublishedPostsCountsForCategoryAndChildren($category);
+        $posts = PostService::getAllPublishedPostsForCategoryAndChildren($category, 9);
         return view('categories.show', compact('posts', 'posts'), compact('category'));
     }
 
@@ -61,7 +61,7 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         $categoryList = Category::defaultOrder()->get()->toTree();
-        $categories = CategoryManager::getTreeCategories($categoryList, 0);
+        $categories = CategoryService::getTreeCategories($categoryList, 0);
         return view('categories.edit', compact('category', 'categories'));
     }
 

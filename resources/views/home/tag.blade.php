@@ -9,7 +9,7 @@
                 {{ __('Tags') }}
             @endif
         </h2>
-        <div class="p-5 mb-4 border border-gray-100 bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl dark:border-gray-700 ">
+        <div class="p-5 mb-4 border border-gray-100 bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl dark:border-gray-700 backdrop-blur-sm backdrop-filter">
             @if(isset($name))
                 @if(isset($posts))
                     <ol class="relative border-l border-gray-500 dark:border-gray-300 mt-2">

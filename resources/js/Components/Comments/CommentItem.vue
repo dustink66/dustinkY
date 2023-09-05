@@ -1,9 +1,9 @@
 <template>
     <ul class="comments space-y-4" :class="IsSon ? 'ml-14 ' + fontFamily : fontFamily">
         <li class="block mt-4" v-for="comment in CommentList" :key="comment.id">
-            <div class="flex p-4 rounded-lg bg-gray-300 bg-opacity-50 hover:bg-opacity-100 dark:bg-zinc-700 dark:bg-opacity-50 dark:hover:bg-opacity-100">
+            <div class="flex p-4 ring-1 ring-gray-100 rounded-lg bg-gray-100 bg-opacity-50 hover:bg-opacity-100 dark:bg-zinc-900 dark:bg-opacity-50 dark:hover:bg-opacity-100">
                 <div class="flex-none">
-                    <div v-if="comment.user.avatar" class="h-16 w-16 rounded-full mr-4">
+                    <div v-if="comment.user.avatar" class="h-16 w-16 rounded-full mr-4 ring-2 ring-gray-100 bg-white">
                         <img :src="comment.user.avatar" alt="" class="w-full block h-full object-contain rounded-full">
                     </div>
                     <span v-else class="inline-flex h-16 w-16 items-center justify-center rounded-full mr-4 bg-green-500">
@@ -16,11 +16,11 @@
                             <span class="font-semibold mr-2">{{ comment.user.name }}</span>
                         </div>
                         <div v-if="userInfo">
-                            <button v-if="showCommentBox[comment.id]" @click="toggleCommentBox(comment.id)" class="inline-flex px-3 py-1 rounded text-secondary bg-red-500 text-white hover:bg-red-400 items-center space-x-2">
-                                <span>关闭</span>
+                            <button v-if="showCommentBox[comment.id]" @click="toggleCommentBox(comment.id)" class="hover:text-red-500">
+                                <span class="antd icon-close-circle-fill text-xl"></span>
                             </button>
-                            <button v-else @click="toggleCommentBox(comment.id)" class="inline-flex px-3 py-1 rounded text-secondary bg-green-500 text-white hover:bg-green-400 items-center space-x-2">
-                                <span>评论</span>
+                            <button v-else @click="toggleCommentBox(comment.id)" class="hover:text-green-500">
+                                <span class="antd icon-comment-fill text-xl"></span>
                             </button>
                         </div>
                         <div v-else>
