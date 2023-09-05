@@ -18,13 +18,17 @@
     </div>
     <div class="flex flex-col h-full">
         <div class="flex flex-row flex-wrap">
-            <span v-if="imageUrl" class="relative">
-                <img :src="imageUrl"  alt="Uploaded image" class="h-40 border-2 border-zinc-500 dark:border-gray-100" :class="isAvatar ? 'w-40 rounded-full' : 'w-64 rounded-lg'"/>
-                <button class="bg-red-600 text-white p-1 rounded-full hover:text-red-600 hover:bg-gray-100" :class="isAvatar ? 'absolute top-3 right-3' : 'absolute -top-2 -right-2'" @click="removeImage()">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path clip-rule="evenodd" d="M17 3.414a2 2 0 00-2.828 0L10 7.172 5.828 3a2 2 0 00-2.828 2.828L7.172 10 3 14.172a2 2 0 002.828 2.828L10 12.828l4.172 4.172a2 2 0 002.828-2.828L12.828 10l4.172-4.172a2 2 0 000-2.828z" fill-rule="evenodd"/>
-                    </svg>
-                </button>
+            <span v-if="imageUrl" class="group relative" :class="isAvatar ? 'w-40 h-40 hover:rounded-full rounded-full bg-white bg-opacity-50' : 'w-64 h-full hover:rounded-lg rounded-lg bg-white bg-opacity-50'" @mouseover="showButtons = true" @mouseout="showButtons = false">
+                <img :src="imageUrl" alt="Uploaded image" class="p-2 pointer-events-none object-cover group-hover:opacity-50" :class="isAvatar ? 'w-40 h-40 rounded-full' : 'w-64 h-full rounded-lg'"/>
+                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex" v-show="showButtons">
+                    <label class="text-green-500 px-3" for="change-upload">
+                        <span class="antd icon-edit text-2xl bg-black rounded-full p-2 bg-opacity-75 hover:bg-green-500 hover:text-gray-200"></span>
+                        <input id="change-upload" class="sr-only" name="change-upload" type="file" @change="onFileChange"/>
+                    </label>
+                    <label class="text-red-500 px-3" @click="removeImage()">
+                        <span class="antd icon-delete text-2xl bg-black rounded-full p-2 bg-opacity-75 hover:bg-red-500 hover:text-gray-200"></span>
+                    </label>
+                </div>
             </span>
             <span v-else>
                 <label class="h-40 flex flex-col items-center justify-center justify-items-center border-2 border-zinc-500 dark:border-gray-100 hover:bg-gray-800 hover:bg-opacity-75 dark:hover:bg-gray-100 dark:hover:text-gray-900 dark:text-gray-100 hover:text-gray-200" :class="isAvatar ? 'w-40 rounded-full' : 'w-64 rounded-lg'" for="file-upload">
@@ -56,6 +60,7 @@ export default {
             imageUrl: this.imageUrl ? this.imageUrl : '',
             uploading: false,
             process: 0,
+            showButtons: false,
         }
     },
     methods: {

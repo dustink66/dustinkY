@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Category;
-class CategoryManager
+class CategoryService
 {
     static public function getCategories($parentId = null, $depth = 0)
     {

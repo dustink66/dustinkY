@@ -5,7 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 
-class EnvServices
+class EnvService
 {
     /**
      * Get all published articles for the category and its children categories.

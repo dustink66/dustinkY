@@ -1,12 +1,12 @@
 <template>
-    <footer id="footer" class="bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75" :style="footerStyle">
-        <div class="mx-auto max-w-7xl py-6 md:flex md:items-center md:justify-between px-4">
+    <footer id="footer" class="bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 backdrop-blur-sm backdrop-filter" :style="footerStyle">
+        <div class="mx-auto max-w-7xl py-6 md:items-center md:justify-between px-4" :class="{'md:flex': icpNumber}">
             <div class="mt-8 md:order-1 md:mt-0">
                 <p class="text-center text-xl leading-5 text-gray-700 dark:text-gray-200" >
                     <span class="antd icon-copyright-circle-fil text-xl"></span>
                     2020-2023
-                    <span class="ZhiMangXing text-2xl hover:text-green-500">{{ appName }}</span>.
-                    All Rights Reserved.
+                    <span class="ZhiMangXing text-2xl hover:text-green-500 px-1">{{ appName }}</span>
+                    {{ allRightsReserved }}
                 </p>
             </div>
             <div v-if="icpNumber" class="mt-8 md:order-1 md:mt-0">
@@ -28,6 +28,10 @@ export default {
             required: true
         },
         icpNumber: {
+            type: String,
+            required: true
+        },
+        allRightsReserved: {
             type: String,
             required: true
         }

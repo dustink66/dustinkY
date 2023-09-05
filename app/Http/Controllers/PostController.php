@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
-use App\Services\CategoryManager;
-use App\Services\PostManager;
+use App\Services\CategoryService;
+use App\Services\PostService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -87,7 +87,7 @@ class PostController extends Controller
         $post->increment('views');
         $post->with('category', 'user', 'tags');
 
-        $tags = PostManager::getPostsTagsJson($post->ulid);
+        $tags = PostService::getPostsTagsJson($post->ulid);
 
         if ($post->background_image && $post->image !== '') {
             \Illuminate\Support\Facades\View::share('BACKGROUND_IMAGE', $post->image);
@@ -102,7 +102,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        $categories = CategoryManager::getCategories();
+        $categories = CategoryService::getCategories();
         return view('posts.edit', compact('post', 'categories'));
     }
 

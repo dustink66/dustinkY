@@ -1,104 +1,58 @@
 <template>
-    <div class="flex flex-col" >
-        <div class="relative">
-            <input
-                type="text"
-                v-model="keyword"
-                placeholder="Search"
-                @keyup.enter="openSearchWindow"
-                class="w-full py-2 pl-2 pr-10 rounded-lg dark:bg-zinc-800 dark:text-gray-200 border-0 ring-1 ring-gray-400 focus:ring-1 focus:ring-gray-400 bg-gray-200 bg-opacity-50 dark:bg-opacity-50"
-            />
-            <button
-                @click="openSearchWindow"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-zinc-900 rounded-lg h-8 w-8 p-2 m-1 dark:hover:ring-1 dark:hover:ring-gray-200 "
-            >
-                <span class="antd icon-search text-xl"></span>
-            </button>
-        </div>
+    <div class="relative z-10" role="dialog" aria-modal="true">
+        <div class="z-10 overflow-y-auto p-4 sm:p-6 md:p-20">
+            <div class="mx-auto max-w-5xl transform divide-y divide-gray-100 dark:divide-zinc-500 overflow-hidden rounded-xl bg-white shadow-2xl ring-1 ring-black ring-opacity-5 transition-all bg-opacity-70 dark:bg-zinc-900 dark:bg-opacity-70 backdrop-blur-sm backdrop-filter">
+                <div class="relative">
+                    <svg class="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400 dark:text-gray-100" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                    </svg>
+                    <input type="text"
+                           v-model="keyword"
+                           :placeholder="placeholder"
+                           class="h-12 w-full border-0 bg-transparent pl-11 pr-4 text-gray-900 placeholder:text-gray-400 focus:ring-0 dark:text-gray-100 dark:placeholder:text-gray-200" role="combobox" aria-expanded="false" aria-controls="options">
+                </div>
 
-        <div v-if="showMessage" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-            <div class="fixed inset-0 z-10 overflow-y-auto">
-                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                    <div class="relative transform overflow-hidden rounded-lg bg-white dark:bg-zinc-900 dark:bg-opacity-90 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                        <div class="sm:flex sm:items-start">
-                            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-gray-200 sm:mx-0 sm:h-10 sm:w-10">
-                                <svg class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                <div v-show="keyword !== '' && results.length > 0" class="flex divide-x divide-gray-100 dark:divide-zinc-500">
+                    <!-- Preview Visible: "sm:h-96" -->
+                    <div class="max-h-96 min-w-0 flex-auto scroll-py-4 overflow-y-auto px-6 py-4 sm:h-96">
+                        <!-- Default state, show/hide based on command palette state. -->
+                        <h2 class="mb-4 mt-2 text-sm text-gray-700 dark:text-gray-300" v-html="result_title"></h2>
+                        <ul class="-mx-2 text-sm text-gray-700" id="recent" role="listbox">
+                            <!-- Active: "bg-gray-100 text-gray-900" -->
+                            <li v-for="(result, key) in results" @click="setCurrent(key)" class="group flex cursor-default items-center rounded-md p-1 my-1 hover:bg-green-400 hover:text-gray-100 dark:text-white dark:hover:bg-gray-100 dark:hover:text-green-500" :class="{ 'bg-green-400 text-gray-100 dark:text-gray-700 dark:bg-gray-100': currentKey === key }" id="recent-1" role="option" tabindex="-1">
+
+                                <span v-if="keyword !== '' && results.length > 0" class="flex-auto truncate text-lg" v-html="highlightMatch(result.title, keyword)"></span>
+                                <!-- Not Active: "hidden" -->
+                                <svg class="ml-3 h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
                                 </svg>
-                            </div>
-                            <div class="mx-auto flex h-12 items-center justify-center pl-4 sm:mx-0 sm:h-10">
-                                <h3 class="text-xl leading-6 text-gray-900 dark:text-gray-100" id="modal-title">请输入搜索关键词</h3>
-                            </div>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                    <!-- Active item side-panel, show/hide based on active state -->
+                    <div v-show="current" class="hidden h-96 w-1/2 flex-none flex-col divide-y divide-gray-100 overflow-y-auto sm:flex">
+                        <div class="relative isolate flex flex-col justify-end overflow-hidden bg-gray-100 bg-opacity-50 dark:bg-zinc-700 dark:bg-opacity-50 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+                            <img :src="current.image" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
+                            <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-100 via-gray-100/80 dark:from-gray-900 dark:via-gray-900/80"></div>
+                            <div class="absolute inset-0 -z-10 ring-1 ring-inset ring-gray-100/10 dark:ring-gray-900/10"></div>
+
+                            <h3 class="mt-3 text-lg font-semibold leading-6 text-black dark:text-white">
+                                <Link :href="current.url">
+                                    <span class="absolute inset-0"></span>
+                                    <span v-if="current" v-html="highlightMatch(current.title, keyword)"></span>
+                                </Link>
+                            </h3>
+                            <span class="py-5 dark:text-white" v-if="current" v-html="highlightMatch(current.meta_description, keyword)">
+                            </span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div v-if="showSearchWindow" class="relative z-10">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-
-            <div class="fixed inset-0 z-10 overflow-y-auto">
-                <div class="flex min-h-full justify-center p-4 text-center sm:items-center sm:p-0 dark:text-gray-100">
-                    <div class="relative transform overflow-hidden rounded-lg bg-white dark:bg-zinc-900 dark:bg-opacity-90 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
-                        <div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
-                            <button @click="closeSearchWindow" type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                <span class="sr-only">Close</span>
-                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="sm:items-start">
-                            <h1 v-if="search !== ''" class="text-xl font-bold mb-4 justify-start">{{ search }} 的搜索结果</h1>
-                            <h1 v-else class="text-xl font-bold mb-4 justify-start">请输入搜索关键词</h1>
-                            <div class="relative">
-                                <input
-                                    type="text"
-                                    v-model="search"
-                                    placeholder="Search"
-                                    class="w-full py-2 pl-2 pr-10 rounded-lg dark:bg-zinc-800 dark:text-gray-200 border-0 ring-1 ring-gray-300 focus:ring-1 focus:ring-gray-300 bg-gray-200 bg-opacity-50 dark:bg-opacity-50"
-                                />
-                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                                    <span class="antd icon-search text-xl"></span>
-                                </div>
-                            </div>
-                            <div v-if="loading" class="flex flex-col">
-                                <span class="py-6 justify-center text-center text-base">
-                                    <span class="rotate-on-hover antd icon-reload text-lg ml-auto"></span>
-                                    正在搜索中...
-                                </span>
-                            </div>
-                            <div v-else-if="results.length > 0" class="flex flex-col">
-                                <div
-                                    v-for="result in results"
-                                    :key="result.id"
-                                    class="py-3 px-4 hover:bg-gray-300 rounded-2xl mt-4 dark:hover:bg-zinc-600 dark:hover:bg-opacity-50"
-                                >
-                                    <Link :href="result.url">
-                                        <h2 class="text-lg font-bold line-clamp-1" v-html="highlightMatch(result.title, search)"></h2>
-                                        <p class="text-gray-500 line-clamp-2 dark:text-gray-300" v-html="highlightMatch(result.meta_description, search)"></p>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div v-else class="flex flex-col">
-                                <span class="py-6 justify-center text-center text-base">
-                                    没有找到与 <span class="font-bold">{{ search }}</span> 相关的结果
-                                </span>
-                            </div>
-                        </div>
-                        <div v-if="total !== 0" class="flex flex-row justify-between items-center mt-5 sm:mt-4">
-                            <div class="flex-initial text-left text-gray-500 dark:text-gray-300">
-                                共有 <span class="font-bold">{{ total }}</span> 条数据，当前第 <span class="font-bold">{{ currentPage }}</span> 页，总共 <span class="font-bold">{{ totalPages }}</span> 页。
-                            </div>
-                            <div class="flex-initial text-right">
-                                <button type="button" @click="nextPage" v-if="currentPage !== totalPages" class="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:ml-3 sm:w-auto">下一页</button>
-                                <button type="button"  @click="previousPage" v-if="currentPage !== 1" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">上一页</button>
-                            </div>
-                        </div>
-
-                    </div>
+                <!-- Empty state, show/hide based on command palette state -->
+                <div v-show="keyword !== '' && results.length == 0" class="px-6 py-14 text-center text-lg sm:px-14">
+                    <p class="mt-4 text-gray-900" v-html="none_tips"></p>
                 </div>
             </div>
         </div>
@@ -109,86 +63,65 @@
 import axios from "axios";
 export default {
     props: {
-        fontFamily: {
+        placeholder: {
             type: String,
             default: "",
         },
+        keywords: {
+            type: String,
+            default: "",
+        }
     },
     data() {
         return {
-            search: "",
-            keyword: "",
+            keyword: this.keywords,
             results: [],
-            showSearchWindow: false,
             showMessage: false,
-            currentPage: 1,
-            pageSize: 5,
-            totalPages: 0,
-            total: 0,
-            loading: false,
+            current: '',
+            currentKey: '',
+            none_tips: '',
+            result_title: '',
         };
     },
     watch: {
-        search() {
+        keyword() {
             // 重置当前页
-            this.currentPage = 1;
-
-            this.totalPages = 0;
-            this.total = 0;
             this.loadResults();
-        },
-        currentPage() {
-            // 加载当前页的结果
-            this.loadResults();
+            this.changeQueryParam();
         },
     },
+    mounted() {
+        this.loadResults();
+    },
     methods: {
-        openSearchWindow() {
-            if (this.keyword.length > 0) {
-                this.showSearchWindow = true;
-                this.search = this.keyword;
-            } else {
-                this.showMessage = true;
-                setTimeout(() => {
-                    this.showMessage = false;
-                }, 2000);
-            }
-        },
-        closeSearchWindow() {
-            this.showSearchWindow = false;
-            this.keyword = "";
-            this.results = [];
-            this.search = "";
-            this.totalPages = 0;
-            this.total = 0;
+        changeQueryParam() {
+            const newQueryParamValue = this.keyword;
+            const currentURL = new URL(window.location.href);
+            currentURL.searchParams.set('keyword', newQueryParamValue);
+
+            window.history.replaceState({}, '', currentURL.toString());
         },
         loadResults() {
-            this.loading = true;
             axios
-                .get("/search", {
-                    params: {
-                        keyword: this.search,
-                        page: this.currentPage,
-                        pageSize: this.pageSize,
-                    },
+                .post("/search", {
+                    keyword: this.keyword,
                 })
                 .then((response) => {
                     this.results = response.data.results;
-                    this.totalPages = response.data.totalPages;
-                    this.total = response.data.total;
+                    this.none_tips = response.data.none_tips;
+                    this.result_title = response.data.result_title;
+                    if (this.results.length > 0) {
+                        this.current = this.results[0];
+                        this.currentKey = 0;
+                    }
                 })
                 .catch((error) => {
                     console.log(error);
-                })
-                .finally(() => {
-                    this.loading = false;
                 });
         },
-        previousPage() {
-            this.currentPage--;
-        },
-        nextPage() {
-            this.currentPage++;
+        setCurrent(key) {
+            this.current = this.results[key];
+            this.currentKey = key;
         },
         highlightMatch(text, keyword) {
             if (!keyword) {
@@ -198,29 +131,6 @@ export default {
             const highlightedText = text.replace(regex, '<span class="text-red-500">$&</span>');
             return highlightedText;
         }
-    },
-    computed: {
-        paginatedResults() {
-            const startIndex = (this.currentPage - 1) * this.pageSize;
-            const endIndex = this.currentPage * this.pageSize;
-            return this.results.slice(startIndex, endIndex);
-        },
-    },
+    }
 };
 </script>
-<style>
-
-.rotate-on-hover {
-    display: inline-block;
-    animation: rotate 2s infinite steps(100);
-}
-
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-</style>

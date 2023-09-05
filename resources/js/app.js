@@ -8,7 +8,6 @@ import WangEditor from "./Components/WangEditor.vue";
 import ThemeSwitch from "./Components/ThemeSwitch.vue";
 import UploadMultipleImage from "./Components/UploadMultipleImage.vue";
 import UploadImage from "./Components/UploadImage.vue";
-import UploadAvatar from "./Components/UploadAvatar.vue";
 import TagSearch from "./Components/TagSearch.vue";
 import HomeGlide from "./Components/HomeGlide.vue";
 import Motto from "./Components/Motto.vue";
@@ -21,7 +20,7 @@ import SvgLogo from "./Components/SvgLogo.vue";
 import Switch from "./Components/Switch.vue";
 import Footer from "./Components/Footer.vue";
 import UploadVideo from "./Components/UploadVideo.vue";
-import Calendar from './Components/Calendar.vue';
+import HomeCalendar from "./Components/HomeCalendar.vue";
 import TagCloud from "./Components/TagCloud.vue";
 import FontSelect from "./Components/FontSelect.vue";
 import time from './time.js'
@@ -41,7 +40,6 @@ createApp({
     .component('ThemeSwitch', ThemeSwitch)
     .component('UploadMultipleImage', UploadMultipleImage)
     .component('UploadImage', UploadImage)
-    .component('UploadAvatar', UploadAvatar)
     .component('TagSearch', TagSearch)
     .component('HomeGlide', HomeGlide)
     .component('Motto', Motto)
@@ -54,7 +52,7 @@ createApp({
     .component('Switch', Switch)
     .component('Footer', Footer)
     .component('UploadVideo', UploadVideo)
-    .component('Calendar', Calendar)
+    .component('HomeCalendar', HomeCalendar)
     .component('TagCloud', TagCloud)
     .component('FontSelect', FontSelect)
     .directive('time', time)

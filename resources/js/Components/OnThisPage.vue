@@ -1,5 +1,11 @@
 <template>
-    <div ref="content" v-html="content"></div>
+    <div id="content"
+         class="px-4 py-4 sm:px-4 lg:px-8 sm:py-4 lg:py-8 bg-opacity-50 text-gray-600 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-50 dark:text-gray-200 backdrop-blur-sm backdrop-filter">
+        <div ref="content" v-html="content"></div>
+        <div class="justify-end text-right mt-12">{{ updatedText }}<span
+            class="font-bold pl-3">{{ updatedAt }}</span></div>
+    </div>
+
 
     <div id="on-this-page" class="on-this-page fixed top-60">
         <ul></ul>
@@ -16,6 +22,14 @@ export default {
         content: {
             type: String,
             required: true,
+        },
+        updatedAt: {
+            type: String,
+            default: '',
+        },
+        updatedText: {
+            type: String,
+            default: '',
         },
         fontFamily: {
             type: String,
@@ -67,6 +81,10 @@ export default {
 <style>
 .on-this-page {
     right: 10rem;
+}
+
+#content img {
+    padding: 1.5rem 1rem;
 }
 
 .pg-text-shadow {

@@ -1385,7 +1385,12 @@
     "Category created successfully!": "分類創建成功！",
     "Category updated successfully!": "分類更新成功！",
     "Category deleted successfully!": "分類刪除成功！",
-    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "請在 php.ini 中開啟 symlink 函數！然後刷新當前頁面進行系統安裝。系統安裝完成後可以關閉 symlink 函數。"
+    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "請在 php.ini 中開啟 symlink 函數！然後刷新當前頁面進行系統安裝。系統安裝完成後可以關閉 symlink 函數。",
+    "Please enter search keywords": "請輸入搜索關鍵詞",
+    "Search results for :keyword": "<span class='text-green-500 text-lg'>:keyword</span> 的搜索結果",
+    "No results related to :keyword were found": "沒有找到與 <span class='font-semibold text-2xl text-green-500'>:keyword</span> 相關的結果",
+    "All Rights Reserved": "版權所有",
+    "View articles published this month": "查看本月發布的文章"
 }
 
 

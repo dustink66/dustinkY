@@ -8,7 +8,7 @@
 
     <div class="py-8">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="bg-white bg-opacity-75 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-75 dark:text-gray-200 mx-auto max-w-7xl pt-4 lg:flex lg:gap-x-16 lg:px-8">
+            <div class="bg-white bg-opacity-50 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-50 dark:text-gray-200 mx-auto max-w-7xl pt-4 lg:flex lg:gap-x-16 lg:px-8 backdrop-blur-sm backdrop-filter">
                 <x-setting-navigation />
 
                 <main class="px-4 pb-6 sm:px-6 lg:flex-auto lg:px-0">
@@ -20,7 +20,7 @@
                                 <div class="pt-3 sm:flex">
                                     <dt class="font-medium sm:w-64 sm:flex-none sm:pr-6">{{ __('Webmaster Avatar') }}</dt>
                                     <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
-                                        <UploadAvatar check-url="{{ route('upload.check_exists') }}" upload-url="{{ route('upload.image') }}" input-key="WEBMASTER_AVATAR" button-text="{{ __('Upload avatar') }}" save-url="{{ route('dashboard.update') }}" avatar="{{ $WEBMASTER_AVATAR }}" class="py-4"/>
+                                        <UploadImage check-url="{{ route('upload.check_exists') }}" is-avatar="true" upload-url="{{ route('upload.image') }}" input-key="WEBMASTER_AVATAR" button-text="{{ __('Upload avatar') }}" save-url="{{ route('dashboard.update') }}" image-url="{{ $WEBMASTER_AVATAR }}" class="py-4"/>
                                     </dd>
                                 </div>
                             </dl>

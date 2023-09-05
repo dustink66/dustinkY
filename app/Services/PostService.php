@@ -8,7 +8,7 @@ use App\Models\PostsTag;
 use App\Models\Tag;
 
 
-class PostManager
+class PostService
 {
     /**
      * Get all published articles for the category and its children categories.

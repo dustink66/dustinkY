@@ -1,6 +1,6 @@
 @props(['postsCount', 'tagsCount', 'webMasterInfo', 'viewCount'])
 <div
-    class="relative bg-white overflow-hidden bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl my-6 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400">
+    class="relative bg-white overflow-hidden bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl my-6 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 backdrop-blur-sm backdrop-filter">
     <div class="flex items-center gap-x-4 text-sm {{ $FONT_FAMILY }} absolute right-0 top-0">
         <a href="mailto:{{$webMasterInfo->email}}" class="bg-green-50 py-4 px-4 rounded-bl-full hover:bg-green-400 text-green-700 hover:text-gray-100 dark:bg-green-50/10  dark:text-green-400" title="给我写信">
             <div class="antd icon-xiexin text-3xl -mt-3 -mr-2 transform hover:scale-125 transition duration-300"></div>

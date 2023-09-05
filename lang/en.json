@@ -1385,5 +1385,10 @@
     "Category created successfully!": "Category created successfully!",
     "Category updated successfully!": "Category updated successfully!",
     "Category deleted successfully!": "Category deleted successfully!",
-    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed."
+    "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.": "Please enable the symlink function in php.ini! Then refresh the current page for system installation. You can close the symlink function after the system installation is completed.",
+    "Please enter search keywords": "Please enter search keywords",
+    "Search results for :keyword": "Search results for <span class='text-green-500 text-lg'>:keyword</span>",
+    "No results related to :keyword were found": "No results related to <span class='font-semibold text-2xl text-green-500'>:keyword</span> were found",
+    "All Rights Reserved": "All Rights Reserved",
+    "View articles published this month": "View articles published this month"
 }

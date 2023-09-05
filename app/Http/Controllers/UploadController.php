@@ -7,22 +7,28 @@ use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
-    public function video(Request $request)
+    private function upload($file, $folder)
     {
         $disk = Storage::disk(config('filesystems.default'));
-        $file = $request->file('video'); // 假设从请求中获取到的文件
         $hash = md5_file($file->getRealPath()); // 获取文件的 MD5 值
-        $filePath = 'videos/' . $hash . '.' . $file->getClientOriginalExtension();
+        $filePath = $folder . '/' . $hash . '.' . $file->getClientOriginalExtension();
         $exists = $disk->exists($filePath);
         if (!$exists) {
             $path = $disk->putFileAs('', $file, $filePath);
         } else {
             $path = $filePath;
         }
+        return $path;
+    }
+
+    public function video(Request $request)
+    {
+        $disk = Storage::disk(config('filesystems.default'));
+        $path = $this->upload($request->file('video'), 'videos');
         if ($path) {
             return response()->json([
                 'error' => 0,
-                'url' => $disk->url($path)
+                'url' => config('filesystems.default') == 'public' ? asset('storage/' . $path) : $disk->url($path)
             ]);
         } else {
             return response()->json([
@@ -35,19 +41,11 @@ class UploadController extends Controller
     public function image(Request $request)
     {
         $disk = Storage::disk(config('filesystems.default'));
-        $file = $request->file('image'); // 假设从请求中获取到的文件
-        $hash = md5_file($file->getRealPath()); // 获取文件的 MD5 值
-        $filePath = 'images/' . $hash . '.' . $file->getClientOriginalExtension();
-        $exists = $disk->exists($filePath);
-        if (!$exists) {
-            $path = $disk->putFileAs('', $file, $filePath);
-        } else {
-            $path = $filePath;
-        }
+        $path = $this->upload($request->file('image'), 'images');
         if ($path) {
             return response()->json([
                 'error' => 0,
-                'url' => $disk->url($path)
+                'url' => config('filesystems.default') == 'public' ? asset('storage/' . $path) : $disk->url($path)
             ]);
         } else {
             return response()->json([
@@ -60,19 +58,11 @@ class UploadController extends Controller
     public function file(Request $request)
     {
         $disk = Storage::disk(config('filesystems.default'));
-        $file = $request->file('file'); // 假设从请求中获取到的文件
-        $hash = md5_file($file->getRealPath()); // 获取文件的 MD5 值
-        $filePath = 'files/' . $hash . '.' . $file->getClientOriginalExtension();
-        $exists = $disk->exists($filePath);
-        if (!$exists) {
-            $path = $disk->putFileAs('', $file, $filePath);
-        } else {
-            $path = $filePath;
-        }
+        $path = $this->upload($request->file('file'), 'files');
         if ($path) {
             return response()->json([
                 'error' => 0,
-                'url' => $disk->url($path)
+                'url' => config('filesystems.default') == 'public' ? asset('storage/' . $path) : $disk->url($path)
             ]);
         } else {
             return response()->json([
@@ -89,7 +79,7 @@ class UploadController extends Controller
         if ($exists) {
             return response()->json([
                 'code' => 200,
-                'url' => $disk->url($request->input('path'))
+                'url' => config('filesystems.default') == 'public' ? asset('storage/' . $request->input('path')) : $disk->url($request->input('path'))
             ]);
         } else {
             return response()->json([

@@ -94,7 +94,7 @@ export default {
         for (let i = 0; i < logo.length; i++) {
             console.log(`Letter ${i} is ${logo[i].getTotalLength()}`);
         }
-        if (this.siteName) {
+        if (this.siteName && this.url === null) {
             const textContainer = document.getElementById('textContainer');
             const text = this.siteName;
             let index = 0;

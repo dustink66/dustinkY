@@ -2,7 +2,7 @@
 
 @foreach($posts as $key => $item)
     @if($key % 2 == 0) <!-- 判断当前索引是否为偶数 -->
-    <div class="bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl my-6 py-4 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 transform hover:scale-105 transition duration-300">
+    <div class="bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl my-6 py-4 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 transform hover:scale-105 transition duration-300 backdrop-blur-sm backdrop-filter">
         <article class="relative isolate flex flex-col gap-4 lg:flex-row mx-auto px-4">
             @if($item->image)
                 <div class="flex-shrink relative aspect-[16/9] sm:aspect-[2/1] lg:aspect-square lg:w-72 lg:h-60 lg:shrink-0 justify-end">
@@ -46,7 +46,7 @@
         </article>
     </div>
     @else
-        <div class="bg-white bg-opacity-75 dark:bg-zinc-900 dark:bg-opacity-75 rounded-2xl my-6 py-4 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 transform hover:scale-105 transition duration-300">
+        <div class="bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl my-6 py-4 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 transform hover:scale-105 transition duration-300 backdrop-blur-sm backdrop-filter">
             <article class="relative isolate flex flex-col gap-4 lg:flex-row mx-auto px-4">
                 <div class="flex-grow">
                     <div class="flex items-center gap-x-4 text-sm {{ $FONT_FAMILY }} absolute left-0 top-0">

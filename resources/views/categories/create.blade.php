@@ -10,7 +10,7 @@
 
     <div class="py-10">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="px-6 py-6 bg-opacity-80 text-gray-800 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-80">
+            <div class="px-6 py-6 bg-opacity-50 text-gray-800 shadow-sm rounded-lg sm:rounded-lg bg-white dark:bg-zinc-800 dark:bg-opacity-50 backdrop-blur-sm backdrop-filter">
                 <x-splade-form action="{{ route('categories.store') }}" class="space-y-4">
                     <span class="block mb-1 text-gray-700 dark:text-gray-200">{{ __('Category Name') }}</span>
                     <x-splade-input id="title" type="text" name="title" placeholder="{{ __('Please enter category name') }}" required autofocus />

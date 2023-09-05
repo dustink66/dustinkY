@@ -15,7 +15,7 @@
     <div class="py-10">
         <div class="max-w-7xl mx-auto px-4">
             @foreach ($posts as $post)
-                <div class="lg:flex lg:items-center lg:justify-between bg-white bg-opacity-75 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-75 px-4 py-4 transform hover:scale-105 transition duration-300 mb-5">
+                <div class="lg:flex lg:items-center lg:justify-between bg-white bg-opacity-50 overflow-hidden shadow-sm sm:rounded-lg dark:bg-zinc-900 dark:bg-opacity-50 px-4 py-4 transform hover:scale-105 transition duration-300 mb-5 backdrop-blur-sm backdrop-filter">
                     <div class="min-w-0 flex-1">
                         <h2 class="leading-7 text-gray-800 sm:truncate sm:text-2xl sm:tracking-wider dark:text-gray-200"><span class="antd icon-biaoti text-2xl mr-2"></span>{{ $post->title }}</h2>
                         <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
