@@ -1,4 +1,4 @@
-![DustinkY](https://static.dustinky.com/images/c83d362afd905dce8cd3a6bc8b9e5cd2.png)
+![DustinkY](https://static.dustinky.com/images/e0cf7258d4d745a0814feb336397fe38.png)
 ## 欢迎使用DustinkY
 - "DustinkY" 是一个博客系统，它将创意与技术相结合，以简约的设计和出色的用户体验为特点，专为博主和创作者打造的高级博客平台。  
 - 无论您是分享观点、展示作品还是与读者互动，DustinkY 都提供了灵活的内容管理工具、精美的主题定制以及强大的社交集成，帮助您将创意和知识传播到世界的每个角落。  
