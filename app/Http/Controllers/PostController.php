@@ -10,6 +10,7 @@ use App\Services\PostService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use ProtoneMedia\Splade\Facades\SEO;
 use ProtoneMedia\Splade\Facades\Toast;
 use ProtoneMedia\Splade\SpladeTable;
 
@@ -89,6 +90,11 @@ class PostController extends Controller
 
         $tags = PostService::getPostsTagsJson($post->ulid);
 
+        SEO::openGraphType('article');
+        SEO::openGraphTitle($post->title);
+        SEO::openGraphUrl(config('app.url').'/posts/'.$post->slug);
+        SEO::openGraphImage($post->image);
+        SEO::metaByProperty('og:description', $post->meta_description);
         if ($post->background_image && $post->image !== '') {
             \Illuminate\Support\Facades\View::share('BACKGROUND_IMAGE', $post->image);
             \Illuminate\Support\Facades\View::share('BACKGROUND_TYPE', 'image');

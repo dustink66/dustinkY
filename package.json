@@ -23,6 +23,8 @@
     },
     "dependencies": {
         "@highlightjs/vue-plugin": "^2.1.0",
+        "@lottiefiles/lottie-player": "^2.0.3",
+        "@lottiefiles/vue-lottie-player": "^1.1.0",
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "@wangeditor/editor": "^5.1.23",
         "@wangeditor/editor-for-vue": "^5.1.12",
@@ -30,9 +32,11 @@
         "algoliasearch": "^4.18.0",
         "alpinejs": "^3.12.2",
         "aplayer": "^1.10.1",
+        "axios-jsonp": "^1.0.4",
         "gsap": "^3.12.2",
         "highlight.js": "^11.8.0",
         "lodash": "^4.17.21",
+        "lottie-web": "^5.12.2",
         "mpvue-calendar": "^3.0.1",
         "node-sass": "^9.0.0",
         "pinia": "^2.1.4",
@@ -42,10 +46,12 @@
         "swiper": "5",
         "vue-awesome-swiper": "^5.0.1",
         "vue-instantsearch": "^4.10.3",
+        "vue-jsonp": "^2.0.0",
         "vue-multiselect": "^3.0.0-beta.2",
         "vue-router": "^4.2.2",
         "vue-slick-carousel": "^1.0.6",
         "vue-upload-multiple-image": "^1.1.6",
-        "vue-wordcloud": "^1.1.1"
+        "vue-wordcloud": "^1.1.1",
+        "vue3-lottie": "^3.2.0"
     }
 }

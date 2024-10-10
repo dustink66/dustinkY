@@ -17,9 +17,12 @@
         "metowolf/meting": "^1.5",
         "overtrue/laravel-filesystem-qiniu": "^2.2",
         "overtrue/laravel-socialite": "^4.0",
+        "overtrue/laravel-wechat": "^7.2",
+        "overtrue/wechat": "~5.0",
         "protonemedia/laravel-splade": "^1.4",
         "protonemedia/laravel-splade-breeze": "^2.5",
-        "sy-records/baidu-textcensor": "^1.0"
+        "sy-records/baidu-textcensor": "^1.0",
+        "w7corp/easywechat": "^6.7"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
@@ -71,7 +74,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "easywechat-composer/easywechat-composer": false
         }
     },
     "minimum-stability": "stable",

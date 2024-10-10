@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Services\CategoryService;
 use App\Services\PostService;
 use Illuminate\Support\Facades\Redirect;
+use ProtoneMedia\Splade\Facades\SEO;
 use ProtoneMedia\Splade\Facades\Toast;
 
 class CategoryController extends Controller
@@ -52,6 +53,10 @@ class CategoryController extends Controller
         $category = Category::with('children', 'parent')->find($category->id);
         $category->posts_count = PostService::getAllPublishedPostsCountsForCategoryAndChildren($category);
         $posts = PostService::getAllPublishedPostsForCategoryAndChildren($category, 9);
+        SEO::openGraphType('category');
+        SEO::openGraphUrl(config('app.url').'/categories/'.$category->slug);
+        SEO::openGraphTitle($category->title.' - '.config('splade-seo.title_suffix'));
+        SEO::metaByProperty('og:description', $category->description);
         return view('categories.show', compact('posts', 'posts'), compact('category'));
     }
 

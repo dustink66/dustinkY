@@ -18,5 +18,5 @@
     <main class="flex-1 overflow-y-auto">
         {{ $slot }}
     </main>
-    <Footer app-name="{{ env('APP_NAME') }}" icp-number="{{ env('ICP_NUMBER') }}" all-rights-reserved="{{ __('All Rights Reserved') }}" />
+    <Footer app-name="{{ env('APP_NAME') }}" icp-number="{{ env('ICP_NUMBER') }}" all-rights-reserved="{!! trans('All Rights Reserved') !!}" />
 </div>

@@ -1389,6 +1389,6 @@
     "Please enter search keywords": "Please enter search keywords",
     "Search results for :keyword": "Search results for <span class='text-green-500 text-lg'>:keyword</span>",
     "No results related to :keyword were found": "No results related to <span class='font-semibold text-2xl text-green-500'>:keyword</span> were found",
-    "All Rights Reserved": "All Rights Reserved",
+    "All Rights Reserved": "All Rights Reserved,Designed And Developed By <a href='https://dustinky.com' target='_blank'><img src='/storage/images/8f2da2adf560c643650513ccf18a2a20.svg' class='dark:invert h-5 mt-1 px-2'></a>",
     "View articles published this month": "View articles published this month"
 }

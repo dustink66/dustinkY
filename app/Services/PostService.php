@@ -48,7 +48,7 @@ class PostService
             ->orderBy('published_at', 'desc')
             ->paginate($perPage);
         foreach ($posts as $key => $value) {
-            $posts[$key]['tags'] = self::getPostsTagsJson($value['id']);
+            $posts[$key]['tags'] = self::getPostsTagsJson($value['ulid']);
         }
         return $posts;
     }

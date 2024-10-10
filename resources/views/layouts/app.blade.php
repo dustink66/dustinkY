@@ -25,7 +25,7 @@
             {{ $slot }}
         </main>
     @endif
-    <Footer app-name="{{ env('APP_NAME') }}" icp-number="{{ env('ICP_NUMBER') }}" all-rights-reserved="{{ __('All Rights Reserved') }}" />
+    <Footer app-name="{{ env('APP_NAME') }}" icp-number="{{ env('ICP_NUMBER') }}" all-rights-reserved="{!! trans('All Rights Reserved') !!}" />
 </div>
 
 

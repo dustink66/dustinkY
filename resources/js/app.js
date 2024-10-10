@@ -1,6 +1,7 @@
 import "./bootstrap";
 import "../css/app.css";
 import "@protonemedia/laravel-splade/dist/style.css";
+import tool from "./utils/tool";
 
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import { renderSpladeApp, SpladePlugin } from "@protonemedia/laravel-splade";
@@ -23,6 +24,8 @@ import UploadVideo from "./Components/UploadVideo.vue";
 import HomeCalendar from "./Components/HomeCalendar.vue";
 import TagCloud from "./Components/TagCloud.vue";
 import FontSelect from "./Components/FontSelect.vue";
+import Weather from "./Components/Weather.vue";
+import Empty from "./Components/Lotties/Empty.vue";
 import time from './time.js'
 
 
@@ -36,6 +39,7 @@ createApp({
         "transform_anchors": false,
         "progress_bar": true
     })
+    .use(tool)
     .component('WangEditor', WangEditor)
     .component('ThemeSwitch', ThemeSwitch)
     .component('UploadMultipleImage', UploadMultipleImage)
@@ -55,5 +59,7 @@ createApp({
     .component('HomeCalendar', HomeCalendar)
     .component('TagCloud', TagCloud)
     .component('FontSelect', FontSelect)
+    .component('Weather', Weather)
+    .component('Empty', Empty)
     .directive('time', time)
     .mount(el);

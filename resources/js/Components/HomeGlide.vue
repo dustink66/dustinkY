@@ -2,12 +2,26 @@
     <div class="swiper-demo rounded-2xl hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 transform transition duration-300">
         <div class="swiper-wrapper rounded-2xl">
             <div class="swiper-slide rounded-2xl" v-for="(slide, index) in slideArr" :key="index">
-                <Link :href="'/posts/' + slide.slug" class="relative isolate flex flex-col justify-center overflow-hidden rounded-2xl bg-gray-900 px-8 lg:px-12 aspect-[16/8] lg:aspect-[16/6] lg:w-full" >
+                <Link v-if="index % 2 === 0" :href="'/posts/' + slide.slug" class="relative isolate flex flex-col justify-center overflow-hidden rounded-2xl bg-gray-900 px-8 lg:px-12 aspect-[16/8] lg:aspect-[16/6] lg:w-full" >
                     <img :src="slide.image" alt="" class="absolute inset-0 -z-10 h-52 lg:h-full w-full object-cover">
                     <div class="absolute inset-0 -z-10 h-52 lg:h-full bg-gradient-to-t lg:bg-gradient-to-l from-gray-100 via-gray-100/80 dark:from-gray-900 dark:via-gray-900/80"></div>
                     <h3 class="mt-3 text-lg leading-6 text-gray-800 dark:text-gray-100">
                         <span class="absolute right-0 top-0 bg-green-50 py-2 px-2 rounded-bl-2xl text-green-700 dark:ring-1 dark:ring-inset dark:ring-green-500/50 dark:bg-green-50/10 dark:text-green-400">{{slide.category.title}}</span>
-                        <div class="hidden sm:block max-w-md ml-auto h-full">
+                        <div class="hidden sm:block title-max-w-md ml-auto h-full pr-10">
+                            <span class="text-5xl line-clamp-2 transform hover:scale-125 transition duration-300">{{slide.title}}</span>
+                            <p class="py-8 line-clamp-3">{{slide.meta_description}}</p>
+                        </div>
+                        <div class="block sm:hidden text-center">
+                            <span class="text-2xl line-clamp-2">{{slide.title}}</span>
+                        </div>
+                    </h3>
+                </Link>
+                <Link v-else :href="'/posts/' + slide.slug" class="relative isolate flex flex-col justify-center overflow-hidden rounded-2xl bg-gray-900 px-8 lg:px-12 aspect-[16/8] lg:aspect-[16/6] lg:w-full" >
+                    <img :src="slide.image" alt="" class="absolute inset-0 -z-10 h-52 lg:h-full w-full object-cover">
+                    <div class="absolute inset-0 -z-10 h-52 lg:h-full bg-gradient-to-t lg:bg-gradient-to-r from-gray-100 via-gray-100/80 dark:from-gray-900 dark:via-gray-900/80"></div>
+                    <h3 class="mt-3 text-lg leading-6 text-gray-800 dark:text-gray-100">
+                        <span class="absolute right-0 top-0 bg-green-50 py-2 px-2 rounded-bl-2xl text-green-700 dark:ring-1 dark:ring-inset dark:ring-green-500/50 dark:bg-green-50/10 dark:text-green-400">{{slide.category.title}}</span>
+                        <div class="hidden sm:block title-max-w-md h-full pl-10">
                             <span class="text-5xl line-clamp-2 transform hover:scale-125 transition duration-300">{{slide.title}}</span>
                             <p class="py-8 line-clamp-3">{{slide.meta_description}}</p>
                         </div>
@@ -119,5 +133,8 @@ export default {
 .swiper-pagination-bullet-active {
     opacity: 1;
     background: #fff;
+}
+.title-max-w-md {
+    max-width: 30rem;
 }
 </style>

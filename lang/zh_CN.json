@@ -1389,6 +1389,6 @@
     "Please enter search keywords": "请输入搜索关键词",
     "Search results for :keyword": "<span class='text-green-500 text-lg'>:keyword</span> 的搜索结果",
     "No results related to :keyword were found": "没有找到与 <span class='font-semibold text-2xl text-green-500'>:keyword</span> 相关的结果",
-    "All Rights Reserved": "版权所有",
+    "All Rights Reserved": "版权所有，由<a href='https://dustinky.com' target='_blank'><img src='/storage/images/8f2da2adf560c643650513ccf18a2a20.svg' class='dark:invert h-5 mt-1 px-1'></a>设计和开发",
     "View articles published this month": "查看本月发布的文章"
 }

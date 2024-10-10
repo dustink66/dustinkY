@@ -1,23 +1,22 @@
 <template>
-<!--    <div class="w-9 h-9 rounded-full bg-gradient-to-b from-gray-100 to-gray-50 flex justify-center items-center" @click="lightMode">-->
-<!--        <span class="text-3xl text-yellow-400 antd icon-sun" style="text-shadow: rgb(234, 179, 8) 5px -5px 1em, rgb(234, 179, 8) 0px 0px 1em;"></span>-->
-<!--    </div>-->
-
-    <div v-if="theme === 'dark'" class="w-9 h-9 rounded-full bg-gradient-to-tr from-transparent to-gray-800 flex justify-center items-center " @click="lightMode">
-        <button class="text-xl text-white antd icon-sun transform hover:scale-125 transition duration-300" style="text-shadow: rgb(234, 179, 8) 0px 0px 0.8em, rgb(234, 179, 8) 0px 0px 0.8em;"></button>
+    <div v-if="theme === 'dark'" class="w-12 h-12 rounded-full bg-gradient-to-tr from-transparent to-blue-950 flex justify-center items-center" @click="lightMode">
+        <SunnyNight class="scale-175 transform hover:scale-225 transition duration-300" />
     </div>
-    <div v-else class="w-9 h-9 rounded-full bg-gradient-to-b from-blue-900 to-blue-500 flex justify-center items-center" @click="darkMode">
-        <button class="text-xl text-yellow-400 text-shadow antd icon-moon transform hover:scale-125 transition duration-300" style="text-shadow: rgb(234, 179, 8) 5px -5px 1em, rgb(234, 179, 8) 0px 0px 0.8em;"></button>
+    <div v-else class="w-12 h-12 rounded-full bg-gradient-to-tr from-transparent to-sky-600 flex justify-center items-center" @click="darkMode">
+        <SunnyDay class="scale-150 transform hover:scale-200 transition duration-300"/>
     </div>
-
 
 
 </template>
 
 
 <script>
+import SunnyDay from "./Weather/Icon/SunnyDay.vue";
+import SunnyNight from "./Weather/Icon/SunnyNight.vue";
 export default {
-    components: {},
+    components: {
+        SunnyDay,SunnyNight
+    },
     data() {
         return {
             theme: 'light',

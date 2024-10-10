@@ -2,6 +2,7 @@
     <div>
         <HCalendar
             backgroundText
+            completion
             class-name="select-mode"
             :lunar="lunar"
             language="cn"
@@ -25,6 +26,7 @@
 </template>
 <script>
 import { ref } from 'vue'
+import axios from 'axios'
 import HCalendar from 'mpvue-calendar'
 import lunar from 'mpvue-calendar/dist/lunar'
 
@@ -210,6 +212,9 @@ html.dark {
         }
         .vc-calendar-timetable .vc-calendar-timetable-wrap .vc-calendar-body .vc-calendar-content .vc-calendar-month-background-text {
             color: rgba(skyblue, 0.5);
+        }
+        .vc-calendar-timetable .vc-calendar-timetable-wrap .vc-calendar-body .vc-calendar-row .vc-calendar-day.vc-calendar-disabled .vc-calendar-day-container .vc-calendar-almanac, .vc-calendar-timetable .vc-calendar-timetable-wrap .vc-calendar-body .vc-calendar-row .vc-calendar-day.vc-calendar-disabled .vc-calendar-day-container .vc-calendar-date {
+            color: rgb(55 65 81);
         }
     }
 }

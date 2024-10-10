@@ -11,6 +11,9 @@
                 <div class="bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl py-4 px-4 my-6 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 backdrop-blur-sm backdrop-filter">
                     <Motto/>
                 </div>
+
+                <Weather/>
+
                 <div class="bg-white bg-opacity-50 dark:bg-zinc-900 dark:bg-opacity-50 rounded-2xl my-6 hover:shadow-2xl dark:hover:shadow-2xl dark:hover:shadow-gray-400 backdrop-blur-sm backdrop-filter">
                     <HomeCalendar text="{{ __('View articles published this month') }}" />
                 </div>

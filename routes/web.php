@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::any('wechat', [\App\Http\Controllers\WeChatController::class, 'serve']);
+Route::get('/wechat/qrcode', 'App\Http\Controllers\WeChatController@getQRCode');
+Route::any('/wechat/upload', 'App\Http\Controllers\WeChatController@upload');
+Route::any('/wechat/alist', 'App\Http\Controllers\WeChatController@alist');
+Route::any('/wechat/draft', 'App\Http\Controllers\WeChatController@draft');
+Route::any('/wechat/publish', 'App\Http\Controllers\WeChatController@publish');
+
 Route::middleware('splade')->group(function () {
     Route::spladeWithVueBridge();
     Route::spladePasswordConfirmation();

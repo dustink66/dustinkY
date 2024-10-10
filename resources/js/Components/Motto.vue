@@ -39,6 +39,7 @@
 <script>
 import axios from 'axios';
 import { transform, transition } from "@tailwindcss/aspect-ratio";
+import jsonp from "axios-jsonp";
 
 export default {
     name: 'Motto',
@@ -53,15 +54,24 @@ export default {
         this.getHitokoto()
     },
     methods: {
+        jsonpRequest(url) {
+            return axios({
+                url: url,
+                adapter: jsonp
+            })
+        },
         async getHitokoto() {
-            try {
-                const response = await axios.get('https://v1.hitokoto.cn/');
-                this.hitokoto = response.data.hitokoto;
-                this.from = response.data.from;
-                this.from_who = response.data.from_who;
-            } catch (error) {
-                console.log(error)
-            }
+            this.jsonpRequest('https://v1.hitokoto.cn/')
+                .then(response => {
+                    // 请求成功处理逻辑
+                    this.hitokoto = response.data.hitokoto;
+                    this.from = response.data.from;
+                    this.from_who = response.data.from_who;
+                })
+                .catch(error => {
+                    // 请求失败处理逻辑
+                    console.error('请求失败', error)
+                })
         }
     }
 }

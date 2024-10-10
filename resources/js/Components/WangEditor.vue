@@ -167,6 +167,7 @@ export default {
                 const iframe = document.createElement('iframe');
                 iframe.classList.add('h-full');
                 iframe.classList.add('w-full');
+                iframe.classList.add('rounded-lg');
                 iframe.src = iframeSrc;
                 iframe.scrolling = 'no';
                 iframe.border = '0';

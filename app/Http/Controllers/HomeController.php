@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Statistic;
 use App\Models\Tag;
-use App\Services\TextCensor;
 use Illuminate\Http\Request;
 use App\Services\PostService;
 use App\Models\PostsTag;
+use ProtoneMedia\Splade\Facades\SEO;
 
 class HomeController extends Controller
 {
@@ -16,7 +16,7 @@ class HomeController extends Controller
         $postsCount = PostService::getNewestPublishedPostsCounts();
         $tagsCount = Tag::count();
         $newestPublishedPosts = PostService::getNewestPublishedPostsWithTags(6);
-        $sliderPosts = PostService::getSliderPosts(5);
+        $sliderPosts = PostService::getSliderPosts(6);
         $webMaster = (object)[
             'name' => env('WEBMASTER_NAME'),
             'email' => env('WEBMASTER_EMAIL'),
@@ -108,7 +108,7 @@ class HomeController extends Controller
         }
 
         // 获取筛选后的文章
-        $posts = $query->get();
+        $posts = $query->where('published', '1')->get();
 
         // 将文章按月份进行归档
         $archive = [];
@@ -116,13 +116,16 @@ class HomeController extends Controller
             $monthYear = $post->published_at->format('F Y');
             $archive[$monthYear][] = $post;
         }
+        SEO::openGraphType('timeline');
+        SEO::openGraphUrl(config('app.url').'/timeline/'.$yearMonth);
+        SEO::openGraphTitle(trans('Timeline').' - '.config('splade-seo.title_suffix'));
         return view('home.timeline', compact('archive', 'emptyText'));
     }
 
     public function getPostsByDate($date = '2022-8-14')
     {
         list($year, $month, $day) = explode('-', $date);
-        $posts = Post::whereYear('published_at', $year)->whereMonth('published_at', $month)->whereDay('published_at', $day)->get();
+        $posts = Post::whereYear('published_at', $year)->whereMonth('published_at', $month)->whereDay('published_at', $day)->where('published', '1')->get();
         return response()->json([
             'total' => count($posts),
             'results' => $posts,
@@ -132,6 +135,9 @@ class HomeController extends Controller
     public function tag($name = null)
     {
         if ($name) {
+            SEO::openGraphType('tags');
+            SEO::openGraphUrl(config('app.url').'/tag/'.$name);
+            SEO::openGraphTitle(trans('Tags'). '：'.$name.' - '.config('splade-seo.title_suffix'));
             $tag = Tag::where('name', $name)->first();
             $emptyText = trans('The blogger is too lazy to write any articles about the :tag tag!', ['tag' => $name]);
             if ($tag) {
@@ -150,6 +156,9 @@ class HomeController extends Controller
         } else {
             $tags = Tag::all()->pluck('name')->toArray();
             $tagString = implode(',', $tags);
+            SEO::openGraphType('tags');
+            SEO::openGraphUrl(config('app.url').'/tag/');
+            SEO::openGraphTitle(trans('Tags'). ' - '.config('splade-seo.title_suffix'));
             return view('home.tag', compact('tagString'));
         }
     }
